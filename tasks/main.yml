@@ -12,8 +12,8 @@
   homebrew:
     name: "{{ fish_formulas}}"
     state: latest
+    update_homebrew: yes
   when: fish_formulas | list
-  update_homebrew: yes
   tags:
     - upgrade
 
