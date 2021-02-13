@@ -1,4 +1,4 @@
-Role Name
+ansible-fish ![test](https://github.com/inkatze/ansible-dotfiles/workflows/test/badge.svg?branch=main)
 =========
 
 Installs the fish shell and plugins.
