@@ -97,3 +97,13 @@
   when: lookup('env','SHELL') != "/usr/local/bin/fish"
   tags:
     - shell
+
+- name: Updating fisherman plugins
+  shell: fisher update
+  args:
+    executable: /usr/local/bin/fish
+  changed_when: false
+  tags:   # This needs fish
+    - skip_ansible_lint
+    - upgrade
+  when: fish_formulas | list
