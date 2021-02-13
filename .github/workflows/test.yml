@@ -27,16 +27,6 @@ jobs:
             brew install ansible
       - name: Testing fish tasks
         run: make fish
-  test-shell:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Installing dependencies
-        run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" && \
-            brew install ansible
-      - name: Testing fish tasks
-        run: make shell
   test-upgrade:
     runs-on: macos-latest
     steps:
