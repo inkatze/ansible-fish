@@ -11,8 +11,9 @@
 - name: Installing fish formulas
   homebrew:
     name: "{{ fish_formulas}}"
-    state: present
+    state: latest
   when: fish_formulas | list
+  update_homebrew: yes
   tags:
     - upgrade
 
