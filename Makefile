@@ -12,4 +12,4 @@ shell:
 
 upgrade:
 	cd tests && \
-	ansible-playbook test.yml -t upgrade
+	ansible-playbook test.yml -t fish,upgrade
