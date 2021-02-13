@@ -12,14 +12,7 @@ Requirements
 Role Variables
 --------------
 
-```
-fish_formulas:
-  - fish
-  - starship
-fish_plugins: []
-fish_config_source_path: fish
-fish_starship_source_path: ''
-```
+Refer to the [default vars file](defaults/main.yml).
 
 Example Playbook
 ----------------
