@@ -8,7 +8,7 @@
   tags:
     - fish
 
-- name: Installing fish formulas
+- name: Upgrading fish formulas
   homebrew:
     name: "{{ fish_formulas}}"
     state: latest
