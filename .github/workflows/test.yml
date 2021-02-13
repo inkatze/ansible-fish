@@ -1,0 +1,50 @@
+name: test
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  test-static:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Installing dependencies
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" && \
+            brew install ansible
+      - name: Running static checks
+        run: |
+          cd playbook && ansible-playbook main.yml --syntax-check
+  test-fish:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Installing dependencies
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" && \
+            brew install ansible
+      - name: Testing fish tasks
+        run: make fish
+  test-shell:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Installing dependencies
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" && \
+            brew install ansible
+      - name: Testing fish tasks
+        run: make shell
+  test-upgrade:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Installing dependencies
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" && \
+            brew install ansible mas
+      - name: Testing hombrew upgrade
+        run: make upgrade

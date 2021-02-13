@@ -1,0 +1,8 @@
+---
+
+fish_formulas:
+  - fish
+  - starship
+fish_plugins: []
+fish_config_source_path: ''
+fish_starship_source_path: ''
