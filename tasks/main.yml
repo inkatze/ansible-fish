@@ -4,7 +4,6 @@
   homebrew:
     name: "{{ fish_formulas}}"
     state: present
-  when: fish_formulas | list
   tags:
     - fish
 
@@ -13,7 +12,6 @@
     name: "{{ fish_formulas}}"
     state: latest
     update_homebrew: yes
-  when: fish_formulas | list
   tags:
     - upgrade
 
@@ -39,7 +37,7 @@
     dest: "{{ ansible_env.HOME }}/.config/fish/functions"
     recurse: yes
     state: directory
-  when: fish_formulas | list
+  when: fish_plugins | list
   tags:
     - fish
 
@@ -47,7 +45,7 @@
   get_url:
     url: https://git.io/fisher
     dest: "{{ ansible_env.HOME }}/.config/fish/functions/fisher.fish"
-  when: fish_formulas | list
+  when: fish_plugins | list
   tags:
     - fish
 
@@ -61,14 +59,14 @@
   tags:   # This needs fish
     - skip_ansible_lint
     - fish
-  when: fish_formulas | list
+  when: fish_plugins | list
 
 - name: Installing fish plugins
   shell: fisher install {{ item }}
   args:
     executable: /usr/local/bin/fish
   with_items: "{{ fish_plugins }}"
-  when: "fish_formulas | list and item not in fisherman_plugins.stdout"
+  when: "fish_plugins | list and item not in fisherman_plugins.stdout"
   tags:   # This needs fish
     - skip_ansible_lint
     - fish

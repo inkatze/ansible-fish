@@ -1,5 +1,8 @@
 ---
 
 - hosts: localhost
+  vars:
+    fish_plugins:
+      - edc/bass
   roles:
     - role: ../../ansible-fish
