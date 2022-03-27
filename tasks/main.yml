@@ -52,7 +52,7 @@
 - name: Retrieving installed fisherman packages
   shell: fisher list
   args:
-    executable: /usr/local/bin/fish
+    executable: /opt/homebrew/bin/fish
   register: fisherman_plugins
   changed_when: false
   failed_when: false
@@ -64,7 +64,7 @@
 - name: Installing fish plugins
   shell: fisher install {{ item }}
   args:
-    executable: /usr/local/bin/fish
+    executable: /opt/homebrew/bin/fish
   with_items: "{{ fish_plugins }}"
   when: "fish_plugins | list and item not in fisherman_plugins.stdout"
   tags:   # This needs fish
@@ -82,24 +82,24 @@
 - name: Adding fish to shells
   lineinfile:
     path: /etc/shells
-    regexp: '^/usr/local/bin/fish'
-    line: '/usr/local/bin/fish'
+    regexp: '^/opt/homebrew/bin/fish'
+    line: '/opt/homebrew/bin/fish'
   become: true
   become_user: root
   tags:
     - shell
 
 - name: Changing login shell to fish
-  command: chsh -s /usr/local/bin/fish
+  command: chsh -s /opt/homebrew/bin/fish
   changed_when: false
-  when: lookup('env','SHELL') != "/usr/local/bin/fish"
+  when: lookup('env','SHELL') != "/opt/homebrew/bin/fish"
   tags:
     - shell
 
 - name: Updating fisherman plugins
   shell: fisher update
   args:
-    executable: /usr/local/bin/fish
+    executable: /opt/homebrew/bin/fish
   changed_when: false
   tags:   # This needs fish
     - skip_ansible_lint
