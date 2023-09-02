@@ -34,6 +34,7 @@
 - name: Get fish directory
   command: brew --prefix fish
   register: fish_dir
+  changed_when: false
   tags:
     - fish
 
@@ -89,7 +90,7 @@
 - name: Changing login shell to fish
   command: chsh -s {{ fish_dir.stdout }}/bin/fish
   changed_when: false
-  when: lookup('env','SHELL') != "{{ fish_dir.stdout }}/bin/fish"
+  when: lookup('env','SHELL') != (fish_dir.stdout + "/bin/fish" | string)
   tags:
     - shell
 
