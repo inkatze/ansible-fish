@@ -32,7 +32,7 @@
     - fish
 
 - name: Get fish directory
-  command: brew --prefix fish
+  command: brew --prefix
   register: fish_dir
   changed_when: false
   tags:

@@ -1,22 +1,16 @@
 ---
-
 # List of homebrew formulas to be installed along with fish
 fish_formulas:
   - fish
   - starship
 
 # Fisher plugins to be installed.
-# fish_plugins:
-#   - edc/bass
-#   - laughedelic/pisces
-#   - jethrokuan/z
-#   - jorgebucaran/nvm.fish
 fish_plugins: []
 
 # Path within ansible's files folder where fish config files are located.
 # All files and folders in this location will be copied over to the fish configuration folder.
-fish_config_source_path: ''
+fish_config_source_path: ""
 
 # Path within ansible's files folder where starship's fish theme config file is located
 # e.g. dotfiles/starship.toml if the files is located in files/dotfiles/starship.toml
-fish_starship_source_path: ''
+fish_starship_source_path: ""
