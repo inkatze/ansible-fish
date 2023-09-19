@@ -36,6 +36,7 @@
   register: fish_dir
   changed_when: false
   tags:
+    - upgrade
     - fish
 
 - name: Installing fisherman
