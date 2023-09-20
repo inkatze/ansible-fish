@@ -1,4 +1,18 @@
 ---
+- name: Get fish directory
+  command: brew --prefix
+  register: fish_dir
+  changed_when: false
+  tags:
+    - fish
+
+- name: Get fish directory
+  command: brew --prefix
+  register: fish_dir
+  changed_when: false
+  tags:
+    - upgrade
+
 - name: Installing fish formulas
   homebrew:
     name: "{{ fish_formulas}}"
@@ -29,14 +43,6 @@
     dest: "{{ ansible_env.HOME }}/.config"
   when: fish_config_source_path | string
   tags:
-    - fish
-
-- name: Get fish directory
-  command: brew --prefix
-  register: fish_dir
-  changed_when: false
-  tags:
-    - upgrade
     - fish
 
 - name: Installing fisherman
